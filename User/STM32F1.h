@@ -8,7 +8,7 @@
 #include "lcd.h"
 #include "encode.h"
 
-/*- 外部调用 -*/
+/*- 澶栭儴璋冪敤 -*/
 extern u16	Parameter;
 
 #endif

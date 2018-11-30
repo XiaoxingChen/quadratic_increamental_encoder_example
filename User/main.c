@@ -1,16 +1,16 @@
 #include "STM32F1.h"
 
-u16	Parameter = 512;																	//ÊäÈë±àÂëÆ÷ÏßÊı
+u16	Parameter = 512;																	//è¾“å…¥ç¼–ç å™¨çº¿æ•°
 u16 Count,Old_Count;
 
 int main(void)
 {
-	delay_init();	    	 																//ÑÓÊ±º¯Êı³õÊ¼»¯	  
-	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2); 	 	//ÉèÖÃNVICÖĞ¶Ï·Ö×é2:2Î»ÇÀÕ¼ÓÅÏÈ¼¶£¬2Î»ÏìÓ¦ÓÅÏÈ¼¶
-	uart_init(115200);	 																//´®¿Ú³õÊ¼»¯Îª115200
-	LCD_Init();			   																	//³õÊ¼»¯LCD  
-	TIM4_Init();																				//³õÊ¼»¯TIM4Îª±àÂëÆ÷½è¿ÚÄ£Ê½
-	POINT_COLOR=BLUE;																		//×ÖÌåÑÕÉ«
+	delay_init();	    	 																//å»¶æ—¶å‡½æ•°åˆå§‹åŒ–	  
+	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2); 	 	//è®¾ç½®NVICä¸­æ–­åˆ†ç»„2:2ä½æŠ¢å ä¼˜å…ˆçº§ï¼Œ2ä½å“åº”ä¼˜å…ˆçº§
+	uart_init(115200);	 																//ä¸²å£åˆå§‹åŒ–ä¸º115200
+	LCD_Init();			   																	//åˆå§‹åŒ–LCD  
+	TIM4_Init();																				//åˆå§‹åŒ–TIM4ä¸ºç¼–ç å™¨å€Ÿå£æ¨¡å¼
+	POINT_COLOR=BLUE;																		//å­—ä½“é¢œè‰²
 	LCD_ShowString(75,150,200,16,16,"Count:");
 	LCD_ShowNum(125,150,0,1,16);
 	LCD_ShowNum(135,150,0,1,16);
@@ -18,12 +18,12 @@ int main(void)
 	LCD_ShowNum(155,150,0,1,16);
   while(1)
 	{
-		Old_Count = Count;																//»ñÈ¡ÏÈÇ°µÄ¼ÆÊıÖµ
-		Count = TIM4->CNT;																//»ñÈ¡±àÂëÆ÷µ±Ç°ÊıÖµ
-		if(Old_Count != Count)														//Èç¹ûÏÈÇ°µÄ¼ÆÊıÖµÓëµ±Ç°¼ÆÊıÖµ²»ÏàµÈ£¬ËµÃ÷±àÂëÆ÷ÒÑ×ª¶¯´òÓ¡µ±Ç°ÊıÖµ
+		Old_Count = Count;																//è·å–å…ˆå‰çš„è®¡æ•°å€¼
+		Count = TIM4->CNT;																//è·å–ç¼–ç å™¨å½“å‰æ•°å€¼
+		if(Old_Count != Count)														//å¦‚æœå…ˆå‰çš„è®¡æ•°å€¼ä¸å½“å‰è®¡æ•°å€¼ä¸ç›¸ç­‰ï¼Œè¯´æ˜ç¼–ç å™¨å·²è½¬åŠ¨æ‰“å°å½“å‰æ•°å€¼
 		{
-			printf("val = %d\n",Count);										//´®¿Ú´òÓ¡ÊıÖµ
-			LCD_ShowNum(125,150,Count/1000,1,16);						//Òº¾§ÏÔÊ¾ÊıÖµ
+			printf("val = %d\n",Count);										//ä¸²å£æ‰“å°æ•°å€¼
+			LCD_ShowNum(125,150,Count/1000,1,16);						//æ¶²æ™¶æ˜¾ç¤ºæ•°å€¼
 			LCD_ShowNum(135,150,(Count%1000)/100,1,16);
 			LCD_ShowNum(145,150,(Count%100)/10,1,16);
 			LCD_ShowNum(155,150,Count%10,1,16);
