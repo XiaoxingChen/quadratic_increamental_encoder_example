@@ -412,6 +412,11 @@
               <FileType>5</FileType>
               <FilePath>..\..\User\stm32f10x_it.h</FilePath>
             </File>
+            <File>
+              <FileName>report_encoder.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\report_encoder.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

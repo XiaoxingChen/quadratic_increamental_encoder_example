@@ -10,7 +10,8 @@ int put_char(uint8_t ch)
 uint8_t sum_check(uint8_t* start, uint8_t len)
 {
     uint8_t sum = 0;
-    for(int i = 0; i < len; i++)
+		int i;
+    for(i = 0; i < len; i++)
     {
         sum += start[i];
     }
@@ -20,13 +21,14 @@ uint8_t sum_check(uint8_t* start, uint8_t len)
 void ReportEncoder(uint16_t value)
 {
     const uint8_t buff_len = 8;
+		int i;
     uint8_t data_idx = 4;
     uint8_t sum_check_idx = 6;
     uint8_t buff[buff_len] = {0xa5, 0x5a, 0x06, 0xa8, 0xff, 0xff, 0x00, 0xaa};
     *((uint16_t*)&buff[data_idx]) = value;
     buff[sum_check_idx] = sum_check(buff + 2, 4);
 
-    for(int i = 0; i < buff_len; i++)
+    for(i = 0; i < buff_len; i++)
     {
         put_char(buff[i]);
     }
