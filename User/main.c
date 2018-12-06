@@ -1,8 +1,10 @@
 #include "STM32F1.h"
 #include "report_encoder.h"
 
-u16	Parameter = 512;																	//输入编码器线数
-u16 Count,Old_Count;
+#define ENCODER_LINE 500
+u16	Parameter = ENCODER_LINE;																	//输入编码器线数
+u16 Count = ENCODER_LINE;
+u16 Old_Count = ENCODER_LINE;
 
 int main(void)
 {
@@ -23,7 +25,7 @@ int main(void)
 		Count = TIM4->CNT;																//获取编码器当前数值
 		if(Old_Count != Count)														//如果先前的计数值与当前计数值不相等，说明编码器已转动打印当前数值
 		{
-			// printf("val = %d\n",Count);										//串口打印数值
+//			 printf("val = %d\n",Count);										//串口打印数值
 			ReportEncoder(Count);
 			LCD_ShowNum(125,150,Count/1000,1,16);						//液晶显示数值
 			LCD_ShowNum(135,150,(Count%1000)/100,1,16);
